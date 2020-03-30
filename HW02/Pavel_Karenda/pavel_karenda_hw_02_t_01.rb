@@ -1,30 +1,27 @@
 ERROR = /error/.freeze
-arr_lines = []
 
-if ARGV.length != 1
-  puts 'We need exactly one parameter. The name of a file.'
+def read_file
+  arr = []
+  exit_error if ARGV.length != 1
+  filename = ARGV[0]
+  p "Going to open '#{filename}'"
+  file_content = File.open(filename)
+
+  file_content.each do |line|
+    arr.push(line) if line.match(ERROR)
+  end
+  file_content.close
+  arr
+end
+
+def exit_error
+  p 'We need exactly one parameter. The name of a file.'
   exit
 end
-filename = ARGV[0]
-puts "Going to open '#{filename}'"
-
-file = File.open(filename)
-
-def find_error(file, arr_lines)
-  file.each do |line|
-    arr_lines.push(line) if line.match(ERROR)
-  end
-  arr_lines
-end
-p lines = find_error(file, arr_lines)
-file.close
+arr_lines = read_file
 
 def print_error(arr_lines)
-  if arr_lines.empty?
-    p ''
-  else arr_lines.each do |line|
-         p line
-       end
-  end
+  # is to smart for me
+  arr_lines.empty? ? '' : (arr_lines.each { |line| return line })
 end
-print_error(lines)
+print_error(arr_lines)
