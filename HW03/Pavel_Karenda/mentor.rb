@@ -12,11 +12,11 @@ class Mentor
   end
 
   def subscribe_to(student)
-    student.mentor << self
+    student.mentors << self
   end
 
   def delete_mentor(mentor)
-    student.mentor.delete(mentor)
+    student.mentors.delete(mentor)
   end
 
   def show_notifications
