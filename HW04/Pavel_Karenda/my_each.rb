@@ -1,13 +1,11 @@
 module CustomEach
-  def my_each(arr)
+  def my_each
     if block_given?
-      i = 0
-      while i < arr.length
-        yield(arr[i])
-        i += 1
+      (0...(length)).each do |i|
+        yield(self[i])
       end
     else
-      arr
+      self
     end
   end
 end

@@ -3,20 +3,23 @@ require_relative 'my_map'
 require_relative 'my_select'
 
 class Array
-  # attr_reader :arr
-  
-  # it doesn't work with constructor!!
+  attr_reader :arr
+  def initialize(arr)
+    @arr = arr
+  end
 
-  # def initialize(arr) 
-  #   @arr = arr
-  # end
-  
   include CustomEach
   include CustomMap
   include CustomSelect
 end
 
-my_arr = Array.new([1, 2, 3])
+my_arr = Array.new([0, 1, 2, 3])
 
-[].my_each(my_arr) { |elem| p elem + 1 } # it works
-my_arr.my_each(my_arr) { |elem| p elem + 1 } # it works but looks stupid
+my_arr.arr.my_each { |elem| elem + 1 }
+my_arr.arr.my_each
+
+my_arr.arr.my_map { |elem| elem + 2 }
+my_arr.arr.my_map
+
+my_arr.arr.my_select { |elem| elem unless elem.zero? }
+my_arr.arr.my_select
