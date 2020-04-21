@@ -10,13 +10,13 @@ RSpec.describe Array do
   subject { described_class.new([0, 1, 2, 3]) }
 
   describe '#my_each' do
-    context 'no block is given' do
+    context 'when no block is given' do
       it 'returns start array' do
         expect(subject.my_map.to_a).to eq subject
       end
     end
 
-    context 'block is given' do
+    context 'when block is given' do
       it 'returns modified array' do
         expect(subject.my_map { |element| p element + 2 }).to eq([2, 3, 4, 5])
       end
