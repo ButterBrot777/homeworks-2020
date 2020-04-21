@@ -16,8 +16,7 @@ RSpec.describe Array do
 
     context 'when block is given' do
       it 'returns modified array' do
-        p 'asdf'
-        expect(subject.my_each { |element| p element + 1 }).to eq(0...4)
+        expect(subject.my_each { |element| element + 1 }).to eq(0...4)
       end
     end
   end

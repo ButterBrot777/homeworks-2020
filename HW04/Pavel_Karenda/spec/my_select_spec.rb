@@ -9,7 +9,7 @@ end
 RSpec.describe Array do
   subject { described_class.new([0, 1, 2, 3]) }
 
-  describe '#my_each' do
+  describe '#my_select' do
     context 'when no block is given' do
       it 'returns start array' do
         expect(subject.my_select.to_a).to eq subject
@@ -18,7 +18,7 @@ RSpec.describe Array do
 
     context 'when block is given' do
       it 'returns modified array' do
-        expect(subject.my_select { |element| p element != 0 }).to eq([1, 2, 3])
+        expect(subject.my_select { |element| element != 0 }).to eq([1, 2, 3])
       end
     end
   end
